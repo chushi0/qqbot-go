@@ -1,0 +1,17 @@
+syntax = "proto3";
+package proto;
+option go_package = '.;proto';
+
+import 'common.proto';
+
+message SendMessageRequest {
+    string plainText = 1;
+}
+
+message SendMessageResponse {
+    bool success = 1;
+}
+
+service API {
+    rpc SendMessage(SendMessageRequest) returns (SendMessageResponse);
+}

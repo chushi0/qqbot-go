@@ -1,0 +1,31 @@
+syntax = "proto3";
+package proto;
+option go_package = '.;proto';
+
+import 'common.proto';
+
+message OnLoadRequest {
+    Base base = 1;
+}
+
+message OnUnloadRequest {
+    Base base = 1;
+}
+
+message OnMessageRequest {
+    Base base = 1;
+}
+
+message OnImcCallRequest {
+    Base base = 1;
+}
+
+message EmptyResponse {
+}
+
+service Module {
+    rpc OnLoad(OnLoadRequest) returns (EmptyResponse);
+    rpc OnUnload(OnUnloadRequest) returns (EmptyResponse);
+    rpc OnMessage(OnMessageRequest) returns (EmptyResponse);
+    rpc OnImcCall(OnImcCallRequest) returns (EmptyResponse);
+}
